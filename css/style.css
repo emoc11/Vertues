@@ -1,0 +1,62 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body {
+	padding: 0;
+	margin: 0;
+	display: table;
+	vertical-align: middle;
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.center {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.center img {
+	display: inline-block;
+	margin-bottom: 30px;
+}
+
+.center p {
+	display: inline-block;
+	font-size: 30px;
+	font-weight: 700;
+	font-family: "Droid Serif", sans-serif;
+	margin: 0 0 20px 0;
+}
+
+.center .degrade {
+	position: relative;
+	display: inline-block;
+}
+
+.center .degrade:hover .degrade_img {
+	opacity: 1;
+}
+
+.center .degrade_img {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url("../img/degrade_txt.jpg") no-repeat center;
+	background-size: cover;
+	mix-blend-mode: screen;
+	/*transition: all .3s ease-out;*/
+	opacity: 0;
+}
+
+.center h1 {
+	margin: 0;
+	font-size: 12px;
+	font-weight: 900;
+	font-family: "Montserrat", sans-serif;
+	text-transform: uppercase;
+}
