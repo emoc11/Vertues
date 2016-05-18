@@ -1,0 +1,20 @@
+/* Vendors */
+@import 'vendor/*';
+
+/* Variables */
+@import 'variables/*';
+
+/* Normalize.css reset */
+@import '../node_modules/normalize.scss/normalize';
+
+/* General styles */
+@import 'general';
+
+/* Elements shared accross the website */
+@import 'components/*';
+
+/* Modules */
+@import 'modules/*';
+
+/* Pages specific elements or styles */
+@import 'pages/*';

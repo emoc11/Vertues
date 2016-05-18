@@ -1,0 +1,10 @@
+// --- Mixins ---------------------------------------------
+
+
+$tablet-width: 768px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}

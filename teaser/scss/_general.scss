@@ -1,0 +1,47 @@
+*  {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body  {
+	font-size: 100%;
+}
+
+body {
+	background-color: $color--background;
+}
+
+body *  {
+	box-sizing:border-box;
+	font-family: 'Roboto', 'Helvetica', sans-serif;
+	color: #333;
+	font-weight: 400;
+}
+
+img {
+	vertical-align: initial;
+}
+
+a,
+a:hover {
+	color: initial;
+	outline: initial;
+}
+
+ul {
+	list-style: none;
+}
+
+button {
+	background: none;
+	border: none;
+}
+
+button,
+label,
+input,
+textarea {
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+}
