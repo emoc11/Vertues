@@ -47,7 +47,7 @@ section {
 }
 
 p {
-	font-family: "Droid Serif", sans-serif;
+	font-family: "Droid Serif", serif;
 	font-size: .9em;
 	line-height: 2;
 }
@@ -58,4 +58,24 @@ h2 {
 	color: $color--grey;
 	font-size: 2.5em;
     text-transform: uppercase;
+}
+
+::-webkit-input-placeholder { 
+	color: #fff;
+ 	opacity: .9 !important; 
+}
+
+:-moz-placeholder { 
+	color: #fff;
+ 	opacity: .9; 
+}
+
+::-moz-placeholder {
+	color: #fff;
+ 	opacity: .9; 
+}
+
+:-ms-input-placeholder {
+	color: #fff;
+ 	opacity: .9; 
 }

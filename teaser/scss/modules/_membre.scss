@@ -12,7 +12,7 @@
 		margin: 0 auto;
 
 		&:hover {
-			background-position-y: -140px;
+			background-position-y: -139px;
 		}
 	}
 
@@ -28,12 +28,25 @@
 	&-role {
 		color: $color--grey-light;
 		font-style: italic;
-		font-size: .7em;
+		font-size: .68em;
 		text-align: center;
 	}
 
 	&-liens {
-		margin-top: 20px
+		margin-top: 10px;
+		text-align: center; 
+	}
+
+	&-liens-item {
+		color: $color--grey-icon;
+	    font-size: 1.4em;
+	    margin: 0 8px;
+		transition: all .1s ease-in;
+
+		&:hover {
+			text-decoration: none;
+			color: $color--blue-light;
+		}
 	}
 }
 

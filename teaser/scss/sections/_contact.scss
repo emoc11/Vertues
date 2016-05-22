@@ -1,0 +1,19 @@
+.contact {
+	background-image: url(img/montagne.png);
+	background-position: bottom;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+
+	&-title,
+	&-intro {
+		text-align: center;
+	}
+
+	&-title {
+		margin-top: 140px;
+	}
+
+	&-intro {
+		margin-top: 50px;
+	}
+}
