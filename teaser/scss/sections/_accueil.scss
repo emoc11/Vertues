@@ -1,0 +1,19 @@
+.accueil {
+
+	&-logo {
+		display: inline-block;
+		padding-top: 30px;
+	}
+
+	&-texte {
+		margin-top: 30px;    
+		margin-bottom: 180px;
+	}
+
+	&-foret { 
+		position: absolute;       
+		right: 60px;
+    	top: 10px;
+	}
+
+} 

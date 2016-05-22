@@ -1,0 +1,29 @@
+.produit {
+	&-title {
+		margin-top: 100px;
+	}
+
+	&-texte {
+		margin-top: 65px;		
+
+		&--italic {
+			font-style: italic;
+			font-size: 1.2em;
+			color: $color--grey-light;
+			text-transform: uppercase;
+		    font-weight: 900;
+		    line-height: 1.6;
+		    margin-bottom: 140px;
+		}
+	}
+
+	&-capsule-illu {
+		margin-top: 90px;
+		margin-left: 10%;
+	}
+	
+	&-ocean-illu {
+		margin-top: -170px;
+	}
+
+}

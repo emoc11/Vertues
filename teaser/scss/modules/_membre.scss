@@ -1,0 +1,69 @@
+.membre {
+    margin: 0 auto;
+
+	&-illu {
+		background-image: url(img/sprite_equipes.jpg);
+		background-repeat: no-repeat;
+		top: 0;
+		left: 0;
+		width: 140px;
+		height: 140px;
+		display: block;
+		margin: 0 auto;
+
+		&:hover {
+			background-position-y: -140px;
+		}
+	}
+
+	&-title {
+	    padding-top: 15px;
+	    font-size: 1.1em;
+	    font-weight: 900;
+	    line-height: 1;
+	    display: block;
+	    text-align: center;
+	}
+
+	&-role {
+		color: $color--grey-light;
+		font-style: italic;
+		font-size: .7em;
+		text-align: center;
+	}
+
+	&-liens {
+		margin-top: 20px
+	}
+}
+
+.membre--anina {
+	float: left;
+}
+
+
+.membre--come {
+	.membre-illu {
+		background-position-x: -140px;
+	}
+}
+
+.membre--ameziane {
+	float: right;
+
+	.membre-illu {
+		background-position-x: -280px;
+	}
+}
+
+.membre--martin {
+	.membre-illu {
+		background-position-x: -420px;
+	}
+}
+
+.membre--douglas {
+	.membre-illu {
+		background-position-x: -560px;
+	}
+}

@@ -1,0 +1,15 @@
+.background {
+    position: absolute;
+    top: 74px;
+    left: 23%;
+    color: #f7fcfd;
+    font-size: 14em;
+    z-index: 0;
+    font-weight: 900;
+    line-height: 1;
+
+    &--equipe {
+    	left: 1%; 
+    	top: 0;
+    }
+}

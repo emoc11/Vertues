@@ -4,6 +4,9 @@
 /* Variables */
 @import 'variables/*';
 
+/* Sections */
+@import 'sections/*';
+
 /* Normalize.css reset */
 @import '../node_modules/normalize.scss/normalize';
 

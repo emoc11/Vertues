@@ -1,7 +1,7 @@
 //Project related.
 var source = './',
     dest   = './',
-    site   = 'file:///C:/Users/Am%C3%A9ziane/Desktop/Vertues/teaser/index.html';
+    site   = 'localhost/Vertues/teaser/';
 
 var gulp = require('gulp');
 
@@ -55,7 +55,7 @@ gulp.task('style', function() {
 gulp.task("watch", function() {
 
   gulp.start('style');
-  gulp.watch(source + '/scss/**/*', ['css']);
+  gulp.watch(source + '/scss/**/*', ['style']);
 
 });
 
@@ -64,5 +64,5 @@ gulp.task("serve", function() {
   gulp.start('watch');
 });
 
-gulp.task('default', ['serve'], function() {
+gulp.task('default', ['style', 'serve'], function() {
 });
