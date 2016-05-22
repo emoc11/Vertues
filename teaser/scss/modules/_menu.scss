@@ -1,13 +1,23 @@
 .menu {
+	background-color: rgba(255, 255, 255, .9);
+	z-index: 9999;	
+	padding: 30px 0;
+	width: 100%;
 
-	&.is-opened {
-		display: block
+	&.sticky {
+		position: fixed;
+	    top: 0;
+	}
+
+	&-list-wrapper {
+		display: inline-block;
+		vertical-align: middle;
+		overflow: hidden;
 	}
 
 	&-list {
-		display: inline-block;
-		vertical-align: middle;
 		text-transform: uppercase;
+		position: relative;
 	}
 
 	&-link {
@@ -68,7 +78,7 @@
 			width: 100%;
 			height: 2px;
 			background-color: $color--blue;
-			transition: all 0.3s;
+			transition: all 0.5s;
 			backface-visibility: hidden;
 
 			&:after,
@@ -80,7 +90,7 @@
 				width: 100%;
 				height: 2px;
 				background-color: $color--blue;
-				transition: all 0.3s;
+				transition: all 0.5s;
 				backface-visibility: hidden;
 			}
 

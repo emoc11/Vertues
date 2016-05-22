@@ -38,7 +38,7 @@ gulp.task('style', function() {
       .pipe(autoprefixer({
           browsers: ['> 1%', 'last 2 versions']
       }))
-      .pipe(cssnano())
+      .pipe(cssnano({zindex: false}))
       .pipe(concat('style.css'))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(dest))
