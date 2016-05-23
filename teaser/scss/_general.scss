@@ -60,6 +60,13 @@ h2 {
     text-transform: uppercase;
 }
 
+a,
+a:focus {
+	outline: none;
+	text-decoration: none;
+	color: initial;
+}
+
 ::-webkit-input-placeholder { 
 	color: #fff;
  	opacity: .9 !important; 
