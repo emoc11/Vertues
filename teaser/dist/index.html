@@ -227,14 +227,14 @@
 					Si vous êtes intéressé pour essayer notre prototype, ou travailler avec nous, n'hésitez pas à nous contacter grâce au formulaire suivant. Toutes vos remarques et suggestions sont les bienvenues !
 				</p>
 
-				<form action="">
+				<form id='sendForm' action="php/send_mail.php" method="post">
 
 					<div class="form">
-						<input class="form-input" type="text" placeholder="Nom*" required>
-						<input class="form-input" type="text" placeholder="Prénom*">
-						<input class="form-input" type="text" placeholder="E-mail*">
-						<input class="form-input" type="text" placeholder="Société">
-						<textarea class="form-textarea" placeholder="Message*" required></textarea>
+						<input name="nom" class="form-input" type="text" placeholder="Nom*" required>
+						<input name="prenom" class="form-input" type="text" placeholder="Prénom*">
+						<input name="email" class="form-input" type="email" placeholder="E-mail*">
+						<input name="societe" class="form-input" type="text" placeholder="Société">
+						<textarea name="message" class="form-textarea" placeholder="Message*" required></textarea>
 						<p class="form-note">*informations obligatoires</p>
 						<input type="submit" class="form-submit" value="ENVOYER">
 					</div>

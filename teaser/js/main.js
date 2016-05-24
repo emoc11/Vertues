@@ -22,7 +22,6 @@ $(function() {
 
 			var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
 
-			// $menuList.stop().animate({'left': leftPosition}, 500, "linear");
 			TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
 		}
 
@@ -55,7 +54,6 @@ $(function() {
 
 			$menu.removeClass('sticky');
 			$menuToggle.css('cursor', 'default').addClass('on');
-			// $menuList.stop().animate({'left': 0}, 500, "linear");
 			TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
 
 		}
@@ -88,6 +86,28 @@ $(function() {
 				clickedMenuLink = false;
 			}, 100);
 
+		});
+	});
+
+	/* Submit Form */
+	$("#sendForm").submit(function(e) {
+		e.preventDefault();
+
+		var nom = $("#sendForm input[name='nom']").val();
+		var prenom = $("#sendForm input[name='prenom']").val();
+		var email = $("#sendForm input[name='email']").val();
+		var societe = $("#sendForm input[name='societe']").val();
+		var message = $("#sendForm input[name='message']").val();
+
+		$.ajax({
+			method: "POST",
+			url: "php/send_mail.php"
+		})
+		.done(function(data) {
+			console.log(data);
+		})
+		.fail(function() {
+			console.log('FORM AJAX FAILED');
 		});
 	});
 
