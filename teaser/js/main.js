@@ -81,7 +81,6 @@ $(function() {
 		// L'écran scroll vers la section correspondante
 		$('body, html').stop().animate( {scrollTop : $(ancre).offset().top - 140 }, function() {
 
-
 			setTimeout(function() {
 				clickedMenuLink = false;
 			}, 100);
