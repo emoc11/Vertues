@@ -96,17 +96,29 @@ $(function() {
 		var prenom = $("#sendForm input[name='prenom']").val();
 		var email = $("#sendForm input[name='email']").val();
 		var societe = $("#sendForm input[name='societe']").val();
-		var message = $("#sendForm input[name='message']").val();
+		var message = $("#sendForm textarea[name='message']").val();
+
+		var dataForm = {
+			'nom' : nom,
+			'prenom' : prenom,
+			'email' : email,
+			'societe' : societe,
+			'message' : message,
+			encode: true
+		}
 
 		$.ajax({
+			url: "php/send_mail.php",
 			method: "POST",
-			url: "php/send_mail.php"
+			data: dataForm,
+			dataType: "json"
 		})
 		.done(function(data) {
 			console.log(data);
 		})
-		.fail(function() {
+		.fail(function(err) {
 			console.log('FORM AJAX FAILED');
+			console.log(err);
 		});
 	});
 
