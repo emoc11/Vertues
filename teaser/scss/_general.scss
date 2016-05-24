@@ -15,20 +15,20 @@ body {
 }
 
 img {
-	vertical-align: initial; 
+	vertical-align: initial;
 	max-width: 100%;
 }
 
 a,
-a:hover { 
+a:hover {
 	color: initial;
 	outline: initial;
 }
 
 ul {
 	list-style: none;
-} 
- 
+}
+
 button {
 	background: none;
 	border: none;
@@ -67,22 +67,22 @@ a:focus {
 	color: initial;
 }
 
-::-webkit-input-placeholder { 
+::-webkit-input-placeholder {
 	color: #fff;
- 	opacity: .9 !important; 
+ 	opacity: .9 !important;
 }
 
-:-moz-placeholder { 
+:-moz-placeholder {
 	color: #fff;
- 	opacity: .9; 
+ 	opacity: .9;
 }
 
 ::-moz-placeholder {
 	color: #fff;
- 	opacity: .9; 
+ 	opacity: .9;
 }
 
 :-ms-input-placeholder {
 	color: #fff;
- 	opacity: .9; 
+ 	opacity: .9;
 }

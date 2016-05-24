@@ -1,6 +1,6 @@
 //Project related.
 var source = './',
-    dest   = './',
+    dest   = './dist/',
     site   = 'localhost/Vertues/teaser/';
 
 var gulp = require('gulp');
@@ -26,23 +26,43 @@ var reload       = browserSync.reload;
 // Tâche css
 gulp.task('style', function() {
 
-	del([dest+'style.css']);
+	del([dest+'css/style.css']);
 
   return gulp.src(source + 'scss/main.css')
-      .pipe(plumber())
-      .pipe(globbing({ extensions: ['.scss'] }))
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-        includePaths: [source+'scss/**/*']
-      }))
-      .pipe(autoprefixer({
-          browsers: ['> 1%', 'last 2 versions']
-      }))
-      .pipe(cssnano({zindex: false}))
-      .pipe(concat('style.css'))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest(dest))
-      .pipe(reload({stream: true}));
+    .pipe(plumber())
+    .pipe(globbing({ extensions: ['.scss'] }))
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: [source+'scss/**/*']
+    }))
+    .pipe(autoprefixer({
+        browsers: ['> 1%', 'last 2 versions']
+    }))
+    .pipe(cssnano({zindex: false}))
+    .pipe(concat('style.css'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(dest+"css/"))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('html', function () {
+  return gulp.src(source + '*.html')
+    .pipe(gulp.dest(dest))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('js', function(){
+  return gulp.src(source + 'js/**/*.js')
+    .pipe(uglify())
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest(dest+"js/"))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('img', function(){
+  return gulp.src(['img/**/*'])
+    .pipe(gulp.dest(dest+"img/"))
+    .pipe(reload({stream: true}));
 });
 
 // gulp.task("source", function() {
@@ -53,16 +73,25 @@ gulp.task('style', function() {
 // });
 
 gulp.task("watch", function() {
-
-  gulp.start('style');
   gulp.watch(source + '/scss/**/*', ['style']);
+  gulp.watch(source+"*.html", ['html']);
+  gulp.watch(source+"js/**/*.js", ['js']);
+  gulp.watch(source+"img/**/*", ['img']);
 
 });
 
 gulp.task("serve", function() {
-  browserSync({proxy: site});
+  // browserSync({proxy: site});
+  browserSync.init({
+      server: dest
+  });
+  gulp.start('style');
+  gulp.start('html');
+  gulp.start('js');
+  gulp.start('img');
+
   gulp.start('watch');
 });
 
-gulp.task('default', ['style', 'serve'], function() {
+gulp.task('default', ['serve'], function() {
 });
