@@ -7,7 +7,7 @@ $(function() {
 		oldScroll = $(window).scrollTop(),
 		clickedMenuLink = false;
 
-	// Au clique sur le bouton toggle 
+	// Au clique sur le bouton toggle
 
 	$menuToggle.on('click', function() {
 
@@ -20,9 +20,10 @@ $(function() {
 
 			$(this).toggleClass('on');
 
-			var leftPosition = $(this).hasClass('on') ? 0 : "-560px"; 
+			var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
 
-			$menuList.stop().animate({'left': leftPosition}, 500, "linear");
+			// $menuList.stop().animate({'left': leftPosition}, 500, "linear");
+			TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
 		}
 
 	});
@@ -33,37 +34,30 @@ $(function() {
 
 		var scroll = $(this).scrollTop();
 
-		console.log('clickedMenuLink ', clickedMenuLink);
 
-		// Si l'utilisateur n'a pas cliqué un lien du menu
 
-		if (!clickedMenuLink) {
+		// Si on scroll vers le bas et que l'on a dépassé le menu
+		if (oldScroll <= scroll && scroll >= (menuPosition - 20)) {
 
-			// Si on scroll vers le bas et que l'on a dépassé le menu
-			if (oldScroll <= scroll && scroll >= (menuPosition - 20)) {
-				
-				// On ferme celui-ci + mise à jour du css pour le bouton toggle
+			// On ferme celui-ci + mise à jour du css pour le bouton toggle
 
-				$menu.addClass('sticky');
+			$menu.addClass('sticky');
+			// Si l'utilisateur n'a pas cliqué un lien du menu
+			if (!clickedMenuLink) {
 				$menuToggle.css('cursor', 'pointer').removeClass('on');
-				$menuList.stop().animate({'left': "-560px"}, 500, "linear");
+				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+			}
 
-			// Si on scroll vers le haut et que l'on est "avant" le menu
-			} else if (scroll <= (menuPosition - 20)) {
+		// Si on scroll vers le haut et que l'on est "avant" le menu
+		} else if (scroll <= (menuPosition - 20)) {
 
-				// On ouvre celui-ci + mise à jour du css pour le bouton toggle
+			// On ouvre celui-ci + mise à jour du css pour le bouton toggle
 
-				$menu.removeClass('sticky');
-				$menuToggle.css('cursor', 'default').addClass('on');
-				$menuList.stop().animate({'left': 0}, 500, "linear");
+			$menu.removeClass('sticky');
+			$menuToggle.css('cursor', 'default').addClass('on');
+			// $menuList.stop().animate({'left': 0}, 500, "linear");
+			TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
 
-			} 
-
-		} 
-
-		// Si l'utilisateur a cliqué un lien du menu, on laisse celui-ci affiché
-		else {
-			$menuList.css('left', 0);
 		}
 
 		// On stocke la dernière position du scroll
@@ -89,11 +83,9 @@ $(function() {
 		// L'écran scroll vers la section correspondante
 		$('body, html').stop().animate( {scrollTop : $(ancre).offset().top - 140 }, function() {
 
-			console.log("fin du scroll");
 
 			setTimeout(function() {
 				clickedMenuLink = false;
-				console.log("setTimeout");
 			}, 100);
 
 		});

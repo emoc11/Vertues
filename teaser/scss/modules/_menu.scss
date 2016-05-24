@@ -1,6 +1,6 @@
 .menu {
 	background-color: rgba(255, 255, 255, .9);
-	z-index: 9999;	
+	z-index: 9999;
 	padding: 30px 0;
 	width: 100%;
 
@@ -27,11 +27,11 @@
 		position: relative;
 		z-index: 1;
 		padding: 0 3px;
-		
+
 		&:focus {
 			color: $color--grey;
 		}
-		
+
 		&:after {
 			content: "";
 			width: 0%;
@@ -54,24 +54,23 @@
 			width: 100%;
 		}
 	}
-	
+
 	&-item {
 		display: inline-block;
 		margin: 0 15px;
-	} 
+	}
 
 	&-toggle {
 		position: relative;
-    	top: 15px;
 		margin-right: 40px;
 		display: inline-block;
 		vertical-align: middle;
-		width: 28px; 
+		width: 28px;
 		height: 30px;
 		padding: 0;
 		border: 0;
 		background: none;
-		cursor: pointer; 
+		cursor: pointer;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		outline: none;
@@ -84,6 +83,7 @@
 			background-color: $color--blue;
 			transition: all 0.5s;
 			backface-visibility: hidden;
+			top: 14px;
 
 			&:after,
 			&:before {
