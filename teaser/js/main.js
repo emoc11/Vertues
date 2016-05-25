@@ -82,9 +82,11 @@ $(function() {
 			$('.accueil-foret').css('top', topValue);
 
 			$menu.addClass('sticky');
+			$menuToggle.css('cursor', 'pointer');
+
 			// Si l'utilisateur n'a pas cliqué un lien du menu
 			if (!clickedMenuLink && !openedMenu) {
-				$menuToggle.css('cursor', 'pointer').removeClass('on');
+				$menuToggle.removeClass('on');
 				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
 			}
 
