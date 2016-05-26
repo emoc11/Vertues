@@ -9,7 +9,7 @@ $(function() {
 		$body = $('body');
 
 	var oldScroll = $(window).scrollTop(),
-		clickedMenuLink = false,		
+		clickedMenuLink = false,
 		openedMenu = false,
 		menuPosition = 743,
 		menuHeight = $menu.outerHeight(true);
@@ -42,7 +42,7 @@ $(function() {
 		var scroll = $(this).scrollTop();
 
 		if (!clickedMenuLink)
-			activeCurrentLink(scroll); 
+			activeCurrentLink(scroll);
 
 		manageMenu(scroll, oldScroll);
 
