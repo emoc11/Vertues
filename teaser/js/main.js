@@ -9,8 +9,8 @@ $(function() {
 		$body = $('body');
 
 	var oldScroll = $(window).scrollTop(),
-		clickedMenuLink = false,
-		openedMenu = false,
+		// clickedMenuLink = false,
+		// openedMenu = false,
 		menuPosition = 743,
 		menuHeight = $menu.outerHeight(true);
 
@@ -19,7 +19,7 @@ $(function() {
 
 	$menuToggle.on('click', function() {
 
-		openedMenu = !openedMenu;
+		// openedMenu = !openedMenu;
 
 		// Si l'on a dépassé le menu et que celui-ci est en position fixe
 
@@ -41,7 +41,7 @@ $(function() {
 
 		var scroll = $(this).scrollTop();
 
-		if (!clickedMenuLink)
+		// if (!clickedMenuLink)
 			activeCurrentLink(scroll);
 
 		manageMenu(scroll, oldScroll);
@@ -58,7 +58,7 @@ $(function() {
 	        var currLink = $(this);
 	        var refElement = $(currLink.attr("href"));
 
-	        if ( (refElement.position().top - menuHeight < scroll) && (refElement.position().top + refElement.height() > scroll)) {
+	        if ( (refElement.position().top - menuHeight < scroll + 100) && (refElement.position().top + refElement.height() > scroll)) {
 
 	            $menuLink.removeClass("is-active");
 	            currLink.addClass("is-active");
@@ -73,33 +73,25 @@ $(function() {
 	var manageMenu = function(scroll, oldScroll) {
 
 		// Si on scroll vers le bas et que l'on a dépassé le menu
-		if (oldScroll <= scroll && scroll >= (menuPosition - 20)) {
 
-			// On ferme celui-ci + mise à jour du css pour le bouton toggle
-
-			$body.css('padding-top', menuHeight);
-			var topValue = 10 - parseInt(menuHeight) + 'px';
-			$('.accueil-foret').css('top', topValue);
-
-			$menu.addClass('sticky');
-			// Si l'utilisateur n'a pas cliqué un lien du menu
-			if (!clickedMenuLink && !openedMenu) {
-				$menuToggle.css('cursor', 'pointer').removeClass('on');
-				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
-			}
-
-		// Si on scroll vers le haut et que l'on est "avant" le menu
-		} else if (scroll <= (menuPosition - 20)) {
-
-			// On ouvre celui-ci + mise à jour du css pour le bouton toggle
+		if (scroll < (menuPosition - 20) ) {
 
 			$body.css('padding-top', 0);
 			$('.accueil-foret').css('top', '10px');
 			$menu.removeClass('sticky');
-			$menuToggle.css('cursor', 'default').addClass('on');
 			TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
-		}
+			$menuToggle.css('cursor', 'default').addClass('on');
 
+		} else {
+
+			$menu.addClass('sticky');
+			$menuToggle.removeClass('on').css('cursor', 'pointer');
+			TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+
+			$body.css('padding-top', menuHeight);
+			var topValue = 10 - parseInt(menuHeight) + 'px';
+			$('.accueil-foret').css('top', topValue);
+		}
 	}
 
 	$menuLink.on('click', function(e) {
@@ -111,7 +103,7 @@ $(function() {
 
 		var ancre = $('.menu-link.is-active').attr('href'); // On récupère l'ancre vers lequel redirige le lien
 
-		if (ancre !== '#accueil') clickedMenuLink = true; // si le lien ne renvoie pas vers la page d'accueil, alors on garde en mémoire que le scroll est déclenché par un clic sur un lien
+		// if (ancre !== '#accueil') clickedMenuLink = true; // si le lien ne renvoie pas vers la page d'accueil, alors on garde en mémoire que le scroll est déclenché par un clic sur un lien
 
 		// L'écran scroll vers la section correspondante
 		$('body, html').stop().animate( {scrollTop : $(ancre).offset().top - menuHeight }, function() {
