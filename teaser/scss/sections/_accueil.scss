@@ -18,3 +18,17 @@
 	}
 
 } 
+
+@include tablet {
+
+	.accueil {
+		&-texte {
+			margin-bottom: 30px;
+		}
+
+		&-foret {
+			display: none;
+		}
+	}
+
+}
