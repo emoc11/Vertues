@@ -9,7 +9,7 @@ $(function() {
 		$body = $('body');
 
 	var oldScroll = $(window).scrollTop(),
-		// clickedMenuLink = false,		
+		// clickedMenuLink = false,
 		// openedMenu = false,
 		menuPosition = 743,
 		menuHeight = $menu.outerHeight(true);
@@ -42,7 +42,7 @@ $(function() {
 		var scroll = $(this).scrollTop();
 
 		// if (!clickedMenuLink)
-			activeCurrentLink(scroll); 
+			activeCurrentLink(scroll);
 
 		manageMenu(scroll, oldScroll);
 
@@ -80,7 +80,7 @@ $(function() {
 			$('.accueil-foret').css('top', '10px');
 			$menu.removeClass('sticky');
 			TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
-			$menuToggle.css('cursor', 'default').addClass('on');	
+			$menuToggle.css('cursor', 'default').addClass('on');
 
 		} else {
 
