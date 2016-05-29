@@ -44,6 +44,7 @@ textarea {
 
 section {
 	position: relative;
+	z-index: 9998;
 }
 
 p {
@@ -91,8 +92,13 @@ a:focus {
 	body {
 		font-size: 14px;
 	}
+	
+	h2,
+	p {
+		text-align: center;
+	}
 
-	.container {
-		padding: 0;
+	.background {
+		display: none;
 	}
 }

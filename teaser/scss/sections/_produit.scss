@@ -73,3 +73,20 @@
 	}
 
 }
+
+@include tablet {
+	.produit {
+		&-title {
+			margin-top: 20px;
+		}
+
+		&-texte {
+			margin-top: 30px;
+		}
+		&-link {
+			margin: 30px auto 0;
+			max-width: 200px;
+			width: 100%;
+		}
+	}
+}
