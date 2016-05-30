@@ -1,0 +1,43 @@
+.post {
+
+	text-align: center;
+	margin-bottom: 70px;
+
+	&-date {
+		font-family: Montserrat,sans-serif;
+		color: $color--grey-light;
+		padding-bottom: 5px;
+		font-size: .6em;
+	}
+
+	&-title {
+		font-weight: 900;
+		padding-bottom: 25px; 
+		font-size: 1.1em;
+	}
+
+	&-content {
+		p {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+@include tablet {
+	.post {
+		margin-bottom: 40px;
+
+		&-date {
+			font-size: 0.8em;
+			padding: 0;
+		}
+
+		&-title {
+			line-height: 1.2;
+		}
+
+		&-content p {
+			line-height: 1.6;
+		}
+	}
+}

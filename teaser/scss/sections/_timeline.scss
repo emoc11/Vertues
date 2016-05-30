@@ -1,0 +1,93 @@
+.timeline {
+	padding: 280px 0 350px;
+    background: url(../img/timeline_bg_top.png) top center, url(../img/timeline_bg_bottom.png) bottom center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+ 
+	&-title {
+		text-align: center;
+		margin-bottom: 90px;
+		font-size: 3em;
+	}	
+
+	&-return {
+		position: fixed; 
+		top: 230px;
+		left: 45px;
+	}
+
+	&-return-icone,
+	&-return-texte {
+		display: inline-block;
+		vertical-align: middle; 
+	}
+
+	&-return-icone {
+		background: linear-gradient(-130deg, #6abbe3, #74cdc5);
+		height: 40px;
+		width: 40px;
+		box-shadow: 1px 1px 1px #002f3a;
+		border-radius: 20px;
+		position: relative;
+		margin-right: -15px;
+
+		&:after {
+			content:"";
+			background-image: url(../img/fleche-blanche-gauche.png);
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+			width: 12px;
+			height: 18px;
+			position: absolute;
+		    top: calc(50% - 9px);
+		    left: calc(50% - 6px);
+		}
+	}
+
+	&-return-texte {
+	    transform: rotate(270deg);
+	    font-size: .8em;
+	}
+}
+
+@include tablet {
+ 	.timeline {
+		padding: 200px 0;
+
+ 		&-return {
+		    width: 100%;
+		    background-color: #fff;
+		    box-shadow: 0px 2px 4px #aaa;
+		    top: 0;
+		    left: 0;
+		    padding: 10px;
+		    z-index: 9999;
+ 		}
+ 		&-return-icone {
+ 			margin-right: 10px;
+ 		}
+ 		&-return-texte {
+ 			transform: none;
+ 			font-size: 1em;
+ 		}
+ 	}
+}
+
+@media (max-width: 768px) {
+
+	.timeline {
+		padding: 150px 0;
+	}	
+
+}
+
+@media (max-width: 320px) {
+
+	.timeline {
+		&-title {
+			margin-bottom: 40px;  
+		}
+	}	
+
+}
