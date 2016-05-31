@@ -15,7 +15,7 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && 
 	$societe = test_input($_POST['societe']);
 	$subject = "[Vertues.fr] mail de ".$prenom." ".$nom." de la société ".$societe;
 	$message = test_input($_POST['message']);
-	$to = "vertues_contact@gmail.com";
+	$to = "vertues.contact@gmail.com";
 
 	ini_set("SMTP","aspmx.l.google.com");
 	$headers = "MIME-Version: 1.0" . "\r\n";

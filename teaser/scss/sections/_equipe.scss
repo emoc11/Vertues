@@ -7,3 +7,32 @@
 		padding-top: 80px
 	}
 }
+
+@include tablet() {
+	.equipe-membres {
+		.membre--anina, .membre--ameziane {
+			float:none;
+		}
+
+		.container + .container {
+			margin-top: 40px;
+		}
+
+		.col-md-4 {
+			padding: 0;
+		    display: block;
+		    padding: 0;
+		    margin: 0;
+		    width: 100%;
+		    height: auto;
+
+		    & + .col-md-4 {
+		    	margin-top: 40px;
+		    }
+		}
+
+		.col-md-6 + .col-md-6 {
+			margin-top: 40px;
+		}
+	}
+}

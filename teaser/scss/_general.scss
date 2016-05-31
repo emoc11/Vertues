@@ -86,3 +86,17 @@ a:focus {
 	color: #fff;
  	opacity: .9;
 }
+
+@include tablet() {
+	.container, .col-md-4 {
+		padding: 0;
+	}
+
+	h2, .container p {
+		text-align: center;
+	}
+
+	.background {
+		display: none;
+	}
+}

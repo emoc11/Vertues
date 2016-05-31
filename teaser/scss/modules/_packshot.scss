@@ -117,11 +117,11 @@ $border-color--second : #00d0c4;
 	.packshot-illu {
 	    top: -60px;
 	    right: 50px;
-	} 
-	
+	}
+
 	.packshot-title {
 		top: 90px;
-		right: 1%; 
+		right: 1%;
 	}
 
 	.packshot-content {
@@ -131,4 +131,77 @@ $border-color--second : #00d0c4;
 	    top: 110px;
 	    text-align: left;
 	}
-} 
+}
+
+@include tablet() {
+	.packshot, .packshot--second .packshot {
+		text-align: center;
+		height: auto;
+	}
+
+	.packshot-background, .packshot--second .packshot-background {
+		display: none;
+	}
+
+	.packshot-content, .packshot--second .packshot-content {
+		width: 100%;
+		padding: 20px 20px 15px;
+		top: auto;
+		left: auto;
+		position: relative;
+	}
+
+	.packshot-illu, .packshot--second .packshot-illu {
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	.packshot-title, .packshot--second .packshot-title {
+		top: -20px;
+	    right: 0;
+	    left:0;
+	    transform: rotate(0);
+	}
+
+	.packshot--second {
+		margin-top: 80px;
+		padding-left: 15px;
+		padding-right: 15px;
+		top: 0;
+	}
+
+	.produit-capsule-illu {
+		display: none;
+	}
+
+	.packshot--third {
+		margin-top: 80px;
+		top:0;
+	}
+
+	.packshot--third .packshot-illu {
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.packshot--third .packshot-content {
+		width: 100%;
+	    padding: 20px 20px 15px 20px;
+	    top: 0;
+	}
+
+	.packshot--third .packshot-title {
+		top: -20px;
+		right: 0;
+	}
+
+	.produit-ocean-illu {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}

@@ -64,3 +64,10 @@
 		}
 	}
 }
+
+@include tablet() {
+	.form {
+		margin: 40px 0 0 0;
+		padding: 20px;
+	}
+}
