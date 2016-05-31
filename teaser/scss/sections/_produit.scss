@@ -68,7 +68,7 @@
 		}
 
 		&:hover {
-			opacity: .9;
+			opacity: .7;
 		}
 	}
 
@@ -83,10 +83,22 @@
 		&-texte {
 			margin-top: 30px;
 		}
+
 		&-link {
 			margin: 30px auto 0;
 			max-width: 200px;
 			width: 100%;
 		}
+
+		&-ocean-illu {
+			margin: 40px auto;
+			display: block;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.produit-ocean-illu {
+		max-height: 350px;
 	}
 }

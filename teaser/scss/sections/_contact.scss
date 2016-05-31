@@ -17,3 +17,13 @@
 		margin-top: 50px;
 	}
 }
+
+@include tablet {
+	.contact {
+		padding: 0 15px;
+		
+		&-title {
+			margin-top: 90px;
+		}
+	}
+}

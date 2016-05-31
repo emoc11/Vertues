@@ -12,31 +12,22 @@ $(function() {
 		savedScroll = scroll,
 		savedIsDesktop = isDesktop(),
 		menuHeight = $menu.outerHeight(true);
-		menuPosition = $accueil.height();
+		menuPosition = $accueil.height(),
+		clickedOnMenu = false;
 
 	// Au clique sur le bouton toggle
 
 	$menuToggle.on('click', function() {
 
-		// openedMenu = !openedMenu;
+		clickedOnMenu = true;
 
-		// Si l'on a dépassé le menu et que celui-ci est en position fixe
+		$(this).toggleClass('on');
 
-		if(scroll > (menuPosition - 20)) {
-
-			// On ouvre ou ferme celui-ci
-			// (dans le cas contraire, il reste toujours ouvert)
-
-			$(this).toggleClass('on');
-
-			if (isDesktop()) {
-				var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
-				TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
-			} else {				
-				$menuList.slideToggle();
-			}
-
-
+		if (isDesktop()) {
+			var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
+			TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
+		} else {				
+			$menuList.slideToggle();
 		}
 
 	});
@@ -52,7 +43,6 @@ $(function() {
 
 			// On stocke la dernière position du scroll
 			savedScroll = scroll;
-
 		},
 
 		resize : function() {
@@ -62,12 +52,15 @@ $(function() {
 
 			if (!isDesktop() && savedIsDesktop) {
 				$menuToggle.removeClass('on');
-				scroll > (menuPosition - 20) ? $menuList.slideUp() : $menuList.slideDown();
+				$menuList.slideUp();
 			} else if (isDesktop() && !savedIsDesktop) {
+				clickedOnMenu = false;
 				$menuToggle.addClass('on');
 				$menuList.slideDown();
 				TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
 			}
+
+			manageMenu(scroll, savedScroll);
 
 			savedIsDesktop = isDesktop();
 
@@ -102,35 +95,40 @@ $(function() {
 
 		// Si on scroll vers le bas et que l'on a dépassé le menu
 
-		if (scroll < (menuPosition - 20) ) {
-
-			$body.css('padding-top', 0);
-			$('.accueil-foret').css('top', '10px');
-			$menu.removeClass('sticky');
-			$menuToggle.css('cursor', 'default').addClass('on');
-
-			if (isDesktop()) {
-				TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
-			} else {
-				$menuList.slideDown();
-			}
-
+		if (!isDesktop()) {
+			$menu.addClass('sticky');
+			if ($body.hasClass('home')) $body.css('padding-top', '90px');
 		} else {
 
-			$menu.addClass('sticky');
-			$menuToggle.removeClass('on').css('cursor', 'pointer');
+			if (scroll < (menuPosition - 20) ) {
 
-			if (isDesktop()) {
-				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+				$body.css('padding-top', 0);
+
+				$menu.removeClass('sticky');
+
+				if (!clickedOnMenu) {
+					$menuToggle.addClass('on');
+					TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
+				}
+
+				$('.accueil-foret').css('top', '10px');
+
 			} else {
-				$menuList.slideUp();
+
+				$body.css('padding-top', menuHeight);
+
+				$menu.addClass('sticky');
+				$menuToggle.removeClass('on');
+				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+
+				var topValue = 10 - parseInt(menuHeight) + 'px';
+				$('.accueil-foret').css('top', topValue);
+
 			}
 
-			$body.css('padding-top', menuHeight);
-			var topValue = 10 - parseInt(menuHeight) + 'px';
-			$('.accueil-foret').css('top', topValue);
 		}
 
+		
 	}
 
 	$menuLink.on('click', function(e) {
@@ -188,6 +186,10 @@ $(function() {
 
 	$window.trigger('scroll');
 
+	if (!isDesktop()) {
+		$menuList.slideUp();
+		$menuToggle.removeClass('on');
+	}
 
 	function includeHTML() {
 	  var z, i, a, file, xhttp;

@@ -27,8 +27,18 @@
 		}
 
 		&-foret {
-			display: none;
+		    position: relative;
+			top: 0 !important;
+		    right: 0;
+		    margin: 40px auto;
+		    display: block;
 		}
 	}
 
+}
+
+@media (max-width: 768px) {
+	.accueil-foret {
+		max-height: 350px;
+	}
 }
