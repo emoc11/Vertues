@@ -44,6 +44,7 @@ textarea {
 
 section {
 	position: relative;
+	z-index: 9998;
 }
 
 p {
@@ -87,7 +88,10 @@ a:focus {
  	opacity: .9;
 }
 
-@include tablet() {
+@include tablet {
+	body {
+		font-size: 14px;
+	}
 	.container, .col-md-4 {
 		padding: 0;
 	}

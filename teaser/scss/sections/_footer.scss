@@ -40,3 +40,33 @@
 		}
 	}
 }
+
+@include tablet {
+	.footer {
+		text-align: center;
+
+		&-logo,
+		&-copyright,
+		&-links {
+			margin: 20px 1%;
+			padding: 0;
+			float: none;
+			position: relative;
+			width: 100%;
+			left: 0;
+		}
+
+		&-copyright {
+			margin: 10px 1% 30px;
+		}
+
+		&-logo {
+			display: inline-block;
+			width: auto;
+		}
+
+		&-links {
+			margin-bottom: 10px;
+		}
+	}
+}

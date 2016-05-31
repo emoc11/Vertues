@@ -1,19 +1,18 @@
 $(function() {
 
 	var $window = $(window),
+		$body = $('body'),
+		$accueil = $('#accueil');
 		$menu = $('.menu'),
 		$menuToggle = $('.menu-toggle'),
 		$menuList = $('.menu-list'),
-		$menuLink = $('.menu-link'),
-		$window = $(window),
-		$body = $('body');
+		$menuLink = $('.menu-link');
 
-	var oldScroll = $(window).scrollTop(),
-		// clickedMenuLink = false,
-		// openedMenu = false,
-		menuPosition = 743,
+	var scroll = $window.scrollTop(),
+		savedScroll = scroll,
+		savedIsDesktop = isDesktop(),
 		menuHeight = $menu.outerHeight(true);
-
+		menuPosition = $accueil.height();
 
 	// Au clique sur le bouton toggle
 
@@ -23,35 +22,64 @@ $(function() {
 
 		// Si l'on a dépassé le menu et que celui-ci est en position fixe
 
-		if(oldScroll > (menuPosition - 20)) {
+		if(scroll > (menuPosition - 20)) {
 
 			// On ouvre ou ferme celui-ci
 			// (dans le cas contraire, il reste toujours ouvert)
 
 			$(this).toggleClass('on');
 
-			var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
+			if (isDesktop()) {
+				var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
+				TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
+			} else {				
+				$menuList.slideToggle();
+			}
 
-			TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
+
 		}
 
 	});
 
-	$window.on('scroll', function() {
+	$window.on({
 
-		var scroll = $(this).scrollTop();
+		scroll : function() {
+			scroll = $(this).scrollTop();
+			menuHeight = $menu.outerHeight(true);
 
-		// if (!clickedMenuLink)
 			activeCurrentLink(scroll);
+			manageMenu(scroll, savedScroll);
 
-		manageMenu(scroll, oldScroll);
+			// On stocke la dernière position du scroll
+			savedScroll = scroll;
 
-		// On stocke la dernière position du scroll
-		oldScroll = scroll;
+		},
 
+		resize : function() {
+			scroll = $(this).scrollTop();
+			menuHeight = $menu.outerHeight(true);
+			menuPosition = $accueil.height();
+
+			if (!isDesktop() && savedIsDesktop) {
+				$menuToggle.removeClass('on');
+				scroll > (menuPosition - 20) ? $menuList.slideUp() : $menuList.slideDown();
+			} else if (isDesktop() && !savedIsDesktop) {
+				$menuToggle.addClass('on');
+				$menuList.slideDown();
+				TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
+			}
+
+			savedIsDesktop = isDesktop();
+
+		}
 	});
 
-	var activeCurrentLink = function(scroll) {
+	function isDesktop() {
+		return $window.width() > 1024
+	}
+
+
+	function activeCurrentLink(scroll) {
 
 		$menuLink.each(function () {
 
@@ -70,7 +98,7 @@ $(function() {
 
 	}
 
-	var manageMenu = function(scroll, oldScroll) {
+	function manageMenu(scroll, savedScroll) {
 
 		// Si on scroll vers le bas et que l'on a dépassé le menu
 
@@ -79,19 +107,30 @@ $(function() {
 			$body.css('padding-top', 0);
 			$('.accueil-foret').css('top', '10px');
 			$menu.removeClass('sticky');
-			TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
 			$menuToggle.css('cursor', 'default').addClass('on');
+
+			if (isDesktop()) {
+				TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
+			} else {
+				$menuList.slideDown();
+			}
 
 		} else {
 
 			$menu.addClass('sticky');
 			$menuToggle.removeClass('on').css('cursor', 'pointer');
-			TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+
+			if (isDesktop()) {
+				TweenMax.to($menuList, .5, {left: -560, ease: Quad.easeOut});
+			} else {
+				$menuList.slideUp();
+			}
 
 			$body.css('padding-top', menuHeight);
 			var topValue = 10 - parseInt(menuHeight) + 'px';
 			$('.accueil-foret').css('top', topValue);
 		}
+
 	}
 
 	$menuLink.on('click', function(e) {
@@ -149,4 +188,29 @@ $(function() {
 
 	$window.trigger('scroll');
 
+
+	function includeHTML() {
+	  var z, i, a, file, xhttp;
+	  z = document.getElementsByTagName("*");
+	  for (i = 0; i < z.length; i++) {
+	    if (z[i].getAttribute("include-html")) {
+	      a = z[i].cloneNode(false);
+	      file = z[i].getAttribute("include-html");
+	      var xhttp = new XMLHttpRequest();
+	      xhttp.onreadystatechange = function() {
+	        if (xhttp.readyState == 4 && xhttp.status == 200) {
+	          a.removeAttribute("include-html");
+	          a.innerHTML = xhttp.responseText;
+	          z[i].parentNode.replaceChild(a, z[i]);
+	          includeHTML();
+	        }
+	      }      
+	      xhttp.open("GET", file, true);
+	      xhttp.send();
+	      return;
+	    }
+	  }
+	}
+
+	includeHTML();
 });

@@ -1,18 +1,40 @@
 .membre {
     margin: 0 auto;
 
+    &-illu-wrapper {
+    	width: 138px;
+		height: 140px;
+		margin: 0 auto;
+    	position: relative;
+		left: 4px;
+    	top: 0;
+    	cursor: pointer;
+
+    	&:hover {
+	    	.membre-illu {
+	    		opacity: 0;
+
+	    		&--second {
+	    			opacity: 1;
+	    		}
+	    	}
+	    }
+    }
+
 	&-illu {
 		background-image: url(../img/sprite_equipes.jpg);
 		background-repeat: no-repeat;
+		position: absolute;
 		top: 0;
 		left: 0;
-		width: 140px;
-		height: 140px;
-		display: block;
-		margin: 0 auto;
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+		transition: all .3s ease;
 
-		&:hover {
+		&--second {
 			background-position-y: -139px;
+			opacity: 0;
 		}
 	}
 
@@ -23,7 +45,7 @@
 	    line-height: 1;
 	    display: block;
 	    text-align: center;
-	}
+	} 
 
 	&-role {
 		color: $color--grey-light;
