@@ -26,7 +26,7 @@ $(function() {
 		if (isDesktop()) {
 			var leftPosition = $(this).hasClass('on') ? 0 : "-560px";
 			TweenMax.to($menuList, .5, {left: leftPosition, ease: Quad.easeOut});
-		} else {				
+		} else {
 			$menuList.slideToggle();
 		}
 
@@ -128,7 +128,7 @@ $(function() {
 
 		}
 
-		
+
 	}
 
 	$menuLink.on('click', function(e) {
@@ -176,12 +176,27 @@ $(function() {
 			dataType: "json"
 		})
 		.done(function(data) {
-			console.log(data);
+			$(".popinForm .msg").text(data.response, function() {
+				$(".popinForm").fadeIn("slow");
+			});
 		})
 		.fail(function(err) {
 			console.log('FORM AJAX FAILED');
 			console.log(err);
 		});
+	});
+
+	/* Popin when form sent */
+	$(".popinForm .close").bind("click", function() {
+		$(".popinForm").fadeOut("slow");
+	});
+	$(".popinForm").bind("click", function() {
+		$(".popinForm").fadeOut("slow");
+	});
+
+	$(".popinForm .in_popin").bind("click", function(e) {
+		e.stopPropagation();
+		e.preventDefault();
 	});
 
 	$window.trigger('scroll');
@@ -206,7 +221,7 @@ $(function() {
 	          z[i].parentNode.replaceChild(a, z[i]);
 	          includeHTML();
 	        }
-	      }      
+	      }
 	      xhttp.open("GET", file, true);
 	      xhttp.send();
 	      return;

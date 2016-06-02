@@ -88,6 +88,54 @@ a:focus {
  	opacity: .9;
 }
 
+.popinForm {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top:0;
+	left:0;
+	background-color: rgba(0,0,0,.8);
+	z-index: 999999;
+	cursor: pointer;
+	display: none;
+
+	.in_popin {
+		width: 50vw;
+		height: 50vh;
+		background: white;
+		border-radius: 5px;
+		vertical-align: middle;
+		text-align: center;
+		position: absolute;
+		top: 50vh;
+		left: 50vw;
+		margin-top: -25vh;
+		margin-left: -25vw;
+		display: table;
+		cursor: default;
+
+		.msg {
+			display: table-cell;
+			vertical-align: middle;
+			font-size: 20px;
+		}
+
+		.close {
+			position: absolute;
+			top: 3vh;
+			right: 3vw;
+			cursor: pointer;
+			font-size: 20px;
+			transition: color .2s ease-in;
+
+			&:hover {
+				text-decoration: none;
+				color: $color--blue;
+			}
+		}
+	}
+}
+
 @include tablet {
 	body {
 		font-size: 14px;
