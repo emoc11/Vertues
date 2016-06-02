@@ -176,13 +176,14 @@ $(function() {
 			dataType: "json"
 		})
 		.done(function(data) {
-			$(".popinForm .msg").text(data.response, function() {
-				$(".popinForm").fadeIn("slow");
-			});
+			$(".popinForm .msg").text(data.response);
+			$(".popinForm").fadeIn("slow");
 		})
 		.fail(function(err) {
 			console.log('FORM AJAX FAILED');
 			console.log(err);
+			$(".popinForm .msg").text('Une erreur est survenue. Veuillez nous excuser pour la gêne occasionnée. Si ce problème persiste, merci de nous contacter directement à l\'adresse <a href="mailto:vertues_contact@gmail.com">vertues_contact@gmail.com</a>.');
+			$(".popinForm").fadeIn("slow");
 		});
 	});
 
