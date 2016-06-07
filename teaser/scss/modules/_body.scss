@@ -1,0 +1,70 @@
+.body {
+	position: relative;
+
+	&-full,
+	&-bottom,
+	&-middle,
+	&-top {
+		position: absolute;
+		max-width: none; 
+	}
+
+	&-bottom,
+	&-middle,
+	&-top {
+		opacity: 0;
+		transition: opacity .4s ease;
+
+		&.is-active {
+			opacity: 1;
+		}
+	}
+
+	&-full {
+		top: 0;
+		left: calc(50% - 42px);
+	}
+
+	&-top {
+		top: 43px;
+		left: calc(50% - 38px);
+	}
+
+	&-middle {
+		top: 83px;
+    	left: calc(50% - 23px);
+	}
+
+	&-bottom {
+		top: 106px;
+	    left: calc(50% - 23px);
+	}
+}
+
+@include tablet {
+	.body {
+		&-full {
+			height: 200px;
+		}
+
+		&-top {
+			height: 27px;
+		    top: 30px;
+		    left: calc(50% - 39px);
+		}
+
+		&-middle,
+		&-bottom {
+			height: 16px;
+		    left: calc(50% - 30px);
+		}
+
+		&-middle {
+		    top: 58px;
+		}
+
+		&-bottom {
+		    top: 74px;
+		}
+	}
+}

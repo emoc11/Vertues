@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Vertues - Formulaire</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="formulaire">
+
+	<header class="header container">
+		<div class="col-md-12">
+			<img class="header-logo" src="../img/logo_v.png" height="43" width="48">
+		</div>
+	</header>
+
+	<section class="question question--intro"> 
+		<div class="question-wrapper">
+			<div class="question-texte">Afin de vous proposer une expérience immersive complète, <br/>nous vous invitons à répondre aux 5 questions suivantes.</div>
+			<a href="#question-1" class="question-next button">Commencer</a>
+		</div>
+	</section>
+
+	<section class="question" id="question-1">
+		<div class="container">
+			<div class="question-head">Question I</div>
+			<div class="question-title"><p>Parmi les images suivantes, laquelle serait la plus relaxante pour vous ?</p></div>
+			<div class="question-wrapper">
+				<div class="choices">
+					<div class="choices-col">
+						<div class="choices-item" data-univers="0">
+							<img class="choices-illu" src="img/univers_cascade.jpg">
+							<p class="choices-name">Cascade</p>
+						</div>
+						<div class="choices-item" data-univers="1">
+							<img class="choices-illu" src="img/univers_desert.jpg">
+							<p class="choices-name">Désert</p>
+						</div>
+						<div class="choices-item" data-univers="2">
+							<img class="choices-illu" src="img/univers_foret.jpg">
+							<p class="choices-name">Forêt</p>
+						</div>
+					</div>
+					<div class="choices-col">
+						<div class="choices-item" data-univers="3">
+							<img class="choices-illu" src="img/univers_ocean.jpg">
+							<p class="choices-name">Océan</p>
+						</div>
+						<div class="choices-item" data-univers="4">
+							<img class="choices-illu" src="img/univers_campagne.jpg">
+							<p class="choices-name">Campagne</p>
+						</div>
+						<div class="choices-item" data-univers="5">
+							<img class="choices-illu" src="img/univers_feu.jpg">
+							<p class="choices-name">Plage</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#question-2" class="question-next button blocked">Continuer</a>
+		</div>
+	</section>
+
+	<section class="question" id="question-2">
+		<div class="container">
+			<div class="question-head">Question II</div>
+			<div class="question-title">
+					<p>En choisissant cet univers, nous vous proposons l'odeur associée :</p>
+			</div>
+			<div class="question-wrapper">
+				<div class="choices">
+					<div id="list-univers" class="choices-row container">
+						<div class="col-md-7 col-md-push-4">
+							<div class="choices-item choices-item--small" data-univers="0">
+								<img class="choices-illu" src="img/univers_cascade.jpg">
+							</div>
+							<div class="choices-item choices-item--small is-active" data-univers="1">
+								<img class="choices-illu" src="img/univers_desert.jpg">
+							</div>
+							<div class="choices-item choices-item--small" data-univers="2">
+								<img class="choices-illu" src="img/univers_foret.jpg">
+							</div>
+							<div class="choices-item choices-item--small" data-univers="3">
+								<img class="choices-illu" src="img/univers_ocean.jpg">
+							</div>
+							<div class="choices-item choices-item--small" data-univers="4">
+								<img class="choices-illu" src="img/univers_campagne.jpg">
+							</div>
+							<div class="choices-item choices-item--small" data-univers="5">
+								<img class="choices-illu" src="img/univers_feu.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="choices-item choices-item--center">
+						<img class="choices-illu" src="">
+						<p class="choices-name"></p>
+						<ul class="choices-description">
+<!-- 							<li><p>Arbre du désert</p></li>
+							<li><p>Sable</p></li> -->
+						</ul>
+					</div>
+					<div class="choices-row choices-row--center">
+						<button id="hide-small-list" class="button button--simple button--transparent"><p>Je suis satisfait(e)</p><button>
+						<button id="show-small-list" class="button button--simple button--transparent"><p>Je préfèrerai un autre parfum</p><button>
+					</div>
+				</div>
+			</div>
+			<a id="selected-parfum" href="#question-3" class="question-next button blocked">Continuer</a>
+		</div>
+	</section>
+
+	<section class="question" id="question-3">
+		<div class="container">
+			<div class="question-head">Question III</div>
+			<div class="question-title"><p>Nous vous proposons de compléter votre voyage en choisissant les zones de chaleurs du siège :</p></div>
+			<div class="question-wrapper">
+				<div class="choices">
+					<div class="choices-item choices-item--center choices-item--body">
+						<div class="body choices-illu choices-illu--full">
+							<img src="img/corps_full.png" alt="" class="body-full">
+							<img id="body-3" src="img/corps_3.png" alt="" class="body-top body-part">
+							<img id="body-2" src="img/corps_2.png" alt="" class="body-middle body-part">
+							<img id="body-1" src="img/corps_1.png" alt="" class="body-bottom body-part">
+						</div>
+						<div class="choices-texte">
+							<div class="choices-name">Réglage du siège</div>
+							<ul class="choices-description">
+								<li data-images="3"><p>Haut du dos</p></li>
+								<li data-images="2"><p>Milieu du dos</p></li>
+								<li data-images="1"><p>Bas du dos</p></li>
+								<li data-images="1,2,3"><p>Dos entier</p></li>
+								<li data-images="0"><p>Sans châleur</p></li> 
+							</ul>
+						</div>		
+					</div>
+				</div>
+			</div>		
+			<a href="#question-4" class="question-next button">Continuer</a>
+		</div>
+	</section>
+
+	<section class="question" id="question-4">
+		<div class="container">
+			<div class="question-head">Question IV</div>
+			<div class="question-title"><p>Votre voyage est presque prêt. Afin d'optimiser votre expérience, merci de nous indiquer si :</p></div>
+			<div class="question-wrapper">
+				<div class="choices choices--center">
+					<div class="choices-item choices-item--center">
+						<button class="choices-button button button--transparent button--simple"><p>Vous êtes allergique aux huiles essentielles ?</p></button>
+						<button class="choices-button button button--transparent button--simple"><p>Vous souffrez de claustrophobie ?</p></button>
+						<button class="choices-button button button--transparent button--simple"><p>Vous souffrez d'épilepsie ?</p></button>
+						<button class="choices-button button button--transparent button--simple"><p>Vous avez des problèmes cardiaques ?</p></button>
+					</div>
+				</div>
+			</div>		
+			<a href="#question-5" class="question-next button">Continuer</a>
+		</div>
+	</section>
+
+	<section class="question question--final" id="question-5">
+		<div class="container">
+			<div class="question-head">Merci !</div>
+			<div class="question-title"><p>Merci d'avoir renseigné les questions précédentes ! Vous voilà prêt à découvrir un univers exceptionnel. Le voyage n'attend que vous, profitez de l'univers : <span id="final-univers-name" class="blue"></span> avec une légère senteure de : <span class="blue" id="final-univers-odeur-1"></span>, ainsi que de : <span class="blue" id="final-univers-odeur-2"></span> ! Bon voyage !</p></div>
+			<a href="./" class="question-next question-finish button">Terminer</a>
+		</div>
+	</section>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>

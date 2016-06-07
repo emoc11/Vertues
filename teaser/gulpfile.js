@@ -78,12 +78,12 @@ gulp.task('php', function(){
 });
 
 gulp.task("watch", function() {
-  gulp.watch(source + '/scss/**/*', ['style']);
-  gulp.watch(source+"*.html", ['html']);
-  gulp.watch(source+"js/**/*.js", ['js']);
-  gulp.watch(source+"img/**/*", ['img']);
-  gulp.watch(source+"fonts/**/*", ['fonts']);
-  gulp.watch(source+"php/**/*", ['php']);
+  gulp.watch('scss/**/*', {cwd: source}, ['style']);
+  gulp.watch('*.html', {cwd: source}, ['html']);
+  gulp.watch('js/**/*.js', {cwd: source}, ['js']);
+  gulp.watch('img/**/*', {cwd: source}, ['img']);
+  gulp.watch('fonts/**/*', {cwd: source}, ['fonts']);
+  gulp.watch('php/**/*', {cwd: source}, ['php']);
 
 });
 

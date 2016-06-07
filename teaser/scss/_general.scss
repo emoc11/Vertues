@@ -5,6 +5,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing:border-box;
+	outline: none;
 }
 
 body {
@@ -23,10 +24,6 @@ a,
 a:hover {
 	color: initial;
 	outline: initial;
-}
-
-ul {
-	list-style: none;
 }
 
 button {
@@ -103,4 +100,8 @@ a:focus {
 	.background {
 		display: none;
 	}
+}
+
+.blue {
+	color: $color--blue-light;
 }

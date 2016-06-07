@@ -153,3 +153,13 @@
 		}
 	}
 }
+
+.menu--form {
+	display: inline-block;
+	width: auto;
+    vertical-align: middle;
+
+    .menu-toggle {
+    	margin-right: 20px;
+    }
+}

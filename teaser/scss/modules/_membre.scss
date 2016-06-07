@@ -33,7 +33,6 @@
 		transition: all .3s ease;
 
 		&--second {
-			background-position-y: -139px;
 			opacity: 0;
 		}
 	}
@@ -79,7 +78,11 @@
 
 .membre--come {
 	.membre-illu {
-		background-position-x: -140px;
+		background-position: -140px 0;
+
+		&--second {
+			background-position: -140px -139px;
+		}
 	}
 }
 
@@ -87,18 +90,30 @@
 	float: right;
 
 	.membre-illu {
-		background-position-x: -280px;
+		background-position: -280px 0;
+
+		&--second {
+			background-position: -280px -139px;
+		}
 	}
 }
 
 .membre--martin {
 	.membre-illu {
-		background-position-x: -420px;
+		background-position: -420px 0;
+
+		&--second {
+			background-position: -420px -139px;
+		}
 	}
 }
 
 .membre--douglas {
 	.membre-illu {
-		background-position-x: -560px;
+		background-position: -560px 0;
+
+		&--second {
+			background-position: -560px -139px;
+		}
 	}
 }

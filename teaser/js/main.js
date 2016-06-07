@@ -13,7 +13,8 @@ $(function() {
 		savedIsDesktop = isDesktop(),
 		menuHeight = $menu.outerHeight(true);
 		menuPosition = $accueil.height(),
-		clickedOnMenu = false;
+		clickedOnMenu = false,
+		clickedMenuLink = false;
 
 	// Au clique sur le bouton toggle
 
@@ -38,8 +39,13 @@ $(function() {
 			scroll = $(this).scrollTop();
 			menuHeight = $menu.outerHeight(true);
 
-			activeCurrentLink(scroll);
-			manageMenu(scroll, savedScroll);
+			if($('.home').length) {
+				if (!clickedMenuLink) {
+					activeCurrentLink(scroll);
+				}
+				manageMenu(scroll, savedScroll);
+			}
+
 
 			// On stocke la dernière position du scroll
 			savedScroll = scroll;
@@ -60,7 +66,7 @@ $(function() {
 				TweenMax.to($menuList, .5, {left: 0, ease: Quad.easeOut});
 			}
 
-			manageMenu(scroll, savedScroll);
+			if($('.home').length) manageMenu(scroll, savedScroll);
 
 			savedIsDesktop = isDesktop();
 
@@ -81,7 +87,7 @@ $(function() {
 
 	        if ( (refElement.position().top - menuHeight < scroll + 100) && (refElement.position().top + refElement.height() > scroll)) {
 
-	            $menuLink.removeClass("is-active");
+	            $menuLink.removeClass("is-active").blur();
 	            currLink.addClass("is-active");
 
 	        } else {
@@ -132,6 +138,8 @@ $(function() {
 	}
 
 	$menuLink.on('click', function(e) {
+
+		clickedMenuLink = true;
 
 		e.preventDefault();
 
@@ -184,6 +192,20 @@ $(function() {
 		});
 	});
 
+	/*
+	** Photos des membres de l'équipe : clique sur mobile
+	*/
+
+	$('.membre-illu-wrapper').on({
+		touchstart: function() {
+			$(this).mouseenter();
+		},
+		touchend: function() {
+			$(this).mouseout();
+		}
+	});
+
+
 	$window.trigger('scroll');
 
 	if (!isDesktop()) {
@@ -191,28 +213,180 @@ $(function() {
 		$menuToggle.removeClass('on');
 	}
 
-	function includeHTML() {
-	  var z, i, a, file, xhttp;
-	  z = document.getElementsByTagName("*");
-	  for (i = 0; i < z.length; i++) {
-	    if (z[i].getAttribute("include-html")) {
-	      a = z[i].cloneNode(false);
-	      file = z[i].getAttribute("include-html");
-	      var xhttp = new XMLHttpRequest();
-	      xhttp.onreadystatechange = function() {
-	        if (xhttp.readyState == 4 && xhttp.status == 200) {
-	          a.removeAttribute("include-html");
-	          a.innerHTML = xhttp.responseText;
-	          z[i].parentNode.replaceChild(a, z[i]);
-	          includeHTML();
-	        }
-	      }      
-	      xhttp.open("GET", file, true);
-	      xhttp.send();
-	      return;
-	    }
-	  }
+
+
+	/**************************************************
+
+		   				FORMULAIRE
+
+	**************************************************/
+
+	if($('.formulaire').length) {
+
+		var $bodyPart = $('.body-part');
+			universName = '',
+			smell1 = '',
+			smell2 = '',
+			univers = [
+				{src: 'cascade', name: 'Cascade', description: ['pierre mouillée', 'humidité']}, 
+				{src: 'desert', name: 'Désert', description: ['arbres du désert', 'sable']}, 
+				{src: 'foret', name: 'Forêt', description: ['sapin', 'eucapalyptus']}, 
+				{src: 'ocean', name: 'Océan', description: ['vagues', 'écumes']}, 
+				{src: 'campagne', name: 'Campagne', description: ['champs', 'fleurs']}, 
+				{src: 'plage', name: 'Plage', description: ['flammes', 'bois brûlé']} 
+			];
+
+		/*
+		** Gestion du bouton "suivant"
+		*/
+
+		$('.question-next').on('click', function(e) {
+
+			// si bouton autre que le dernier permettant de retourner à la page d'accueil
+			if(!$(this).hasClass('question-finish'))
+				e.preventDefault();
+
+			// si le bouton "next" n'est pas désactivé
+			if(!$(this).hasClass('blocked')) {
+
+				var page = $(this).attr('href');
+				$('.question:visible').hide("fold", {duration: 600}, function() {
+					$('#selected-parfum').addClass('blocked');
+					$(page).show("fold", {duration: 800}).addClass('is-active')
+				});
+
+			}	
+			
+		});
+
+
+		/*
+		** Page : question 1 / sélection odeur
+		*/
+
+		$('#question-1 .choices-item').on('click', function() {
+			$('#question-1 .question-next').removeClass('blocked');
+
+			var selectedUnivers = univers[parseInt($(this).data('univers'))];
+			universName = selectedUnivers.name;
+			smell1 = selectedUnivers.description[0];
+			smell2 = selectedUnivers.description[1];
+
+		});
+
+		/*
+		** Page : question 2 / sélection odeur
+		*/
+
+		$('#show-small-list').on('click', function() {
+			$(this).addClass('button-blue').removeClass('button--transparent');
+			$('#hide-small-list').removeClass('button-blue').addClass('button--transparent');
+			$('#list-univers').show(200);
+			$('#selected-parfum').addClass('blocked');
+		});
+
+		$('#hide-small-list').on('click', function() {
+			$(this).addClass('button-blue').removeClass('button--transparent');
+			$('#show-small-list').removeClass('button-blue').addClass('button--transparent');
+			$('#list-univers').hide(200);
+			$('#selected-parfum').removeClass('blocked');
+		});
+
+		$('#question-2 .choices-item').on('click', function() {
+			
+			smell1 = univers[parseInt($(this).data('univers'))].description[0];
+			smell2 = univers[parseInt($(this).data('univers'))].description[1];
+
+		});
+
+		/*
+		** Page : question 3 / sélection parties du corps chauffées
+		*/
+
+		$('.choices-description li').on({
+
+			'click': function() {
+				$('.choices-description li').removeClass('selected');
+				$(this).addClass('selected');
+
+				var listImages = $(this).data('images');
+
+				if (listImages.length > 1) {
+					$bodyPart.addClass('is-active');
+				} else {
+					$('.body-part:not(#body-'+ listImages +')').removeClass('is-active');
+					$('#body-'+listImages).addClass('is-active');
+				}
+			},
+
+			'mouseenter': function() {
+
+				var listImages = $(this).data('images');
+
+				if (listImages.length > 1) {
+					$bodyPart.css('opacity', 1);
+				} else {
+					if (listImages == '0') {
+						$bodyPart.css('opacity', 0);
+					} else {
+						$('.body-part:not(#body-'+ listImages + ')').css('opacity', 0);
+						$('#body-'+ listImages).css('opacity', 1);
+					}
+
+				}
+			},
+
+			'mouseleave': function() {
+				var listImages = $(this).data('images');
+				$('.body-part:not(.is-active)').css('opacity', 0);
+				$('.body-part.is-active').css('opacity', 1);
+			}
+		});
+
+		/*
+		** Page : question 4 / choix allergie
+		*/
+
+		$('#question-4 .choices-button').on('click', function() {
+			$(this).toggleClass('button--transparent button--blue');
+		});
+
+		/* 
+		** Sélection d'un univers : maj css univers sélectionné / déselectionnés
+		*/
+
+		$('.choices-item').on('click', function() {
+
+			if ($.inArray($(this).closest('section').attr('id'), ['question-3', 'question-4']) > -1) return false;
+
+			var id = $(this).data('univers');
+			$('.choices-item').removeClass('is-active');
+			$('.choices-item[data-univers=' + id +']').addClass('is-active');
+
+			var src = 'img/univers_'+ univers[id].src +'.jpg',
+				name =  univers[id].name,
+				description = univers[id].description;
+
+			var $choice = $('#question-2 .choices-item--center');
+
+			$choice.find('.choices-illu').attr('src', src);
+			$choice.find('.choices-name').text(name);
+ 
+			var content = '';
+
+			$.each(description, function(index, value){
+				content += '<li><p>'+ value + '</p></li>';
+			});
+
+			$choice.find('.choices-description').empty().html(content);
+
+			$('#final-univers-name').text(universName);
+			$('#final-univers-odeur-1').text(smell1);
+			$('#final-univers-odeur-2').text(smell2);
+
+		});
+
 	}
 
-	includeHTML();
+	
 });
