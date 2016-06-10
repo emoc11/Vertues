@@ -263,9 +263,9 @@ $(function() {
 			if(!$(this).hasClass('blocked')) {
 
 				var page = $(this).attr('href');
-				$('.question:visible').hide("fold", {duration: 600}, function() {
+				$('.question:visible').hide("fade", {duration: 400}, function() {
 					$('#selected-parfum').addClass('blocked');
-					$(page).show("fold", {duration: 800}).addClass('is-active')
+					$(page).show("fade", {duration: 400}).addClass('is-active')
 				});
 
 			}	
