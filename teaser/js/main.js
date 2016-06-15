@@ -241,12 +241,12 @@ $(function() {
 			smell1 = '',
 			smell2 = '',
 			univers = [
-				{src: 'cascade', name: 'Cascade', description: ['pierre mouillée', 'humidité']}, 
-				{src: 'desert', name: 'Désert', description: ['arbres du désert', 'sable']}, 
-				{src: 'foret', name: 'Forêt', description: ['sapin', 'eucapalyptus']}, 
-				{src: 'ocean', name: 'Océan', description: ['vagues', 'écumes']}, 
-				{src: 'campagne', name: 'Campagne', description: ['champs', 'fleurs']}, 
-				{src: 'plage', name: 'Plage', description: ['flammes', 'bois brûlé']} 
+				{src: 'cascade', name: 'Cascade', description: ['Pierre mouillée', 'Humidité']}, 
+				{src: 'desert', name: 'Désert', description: ['Arbres du désert', 'Sable']}, 
+				{src: 'foret', name: 'Forêt', description: ['Sapin', 'Eucapalyptus']}, 
+				{src: 'ocean', name: 'Océan', description: ['Vagues', 'Ecumes']}, 
+				{src: 'campagne', name: 'Campagne', description: ['Champs', 'Fleurs']}, 
+				{src: 'plage', name: 'Plage', description: ['Flammes', 'Bois brûlé']} 
 			];
 
 		/*
@@ -305,6 +305,8 @@ $(function() {
 		});
 
 		$('#question-2 .choices-item').on('click', function() {
+
+			$('#selected-parfum').removeClass('blocked');
 			
 			smell1 = univers[parseInt($(this).data('univers'))].description[0];
 			smell2 = univers[parseInt($(this).data('univers'))].description[1];
@@ -318,6 +320,7 @@ $(function() {
 		$('.choices-description li').on({
 
 			'click': function() {
+				$('#question-3 .question-next').removeClass('blocked');
 				$('.choices-description li').removeClass('selected');
 				$(this).addClass('selected');
 
@@ -355,7 +358,7 @@ $(function() {
 			}
 		});
 
-		/*
+		/* 
 		** Page : question 4 / choix allergie
 		*/
 
@@ -396,6 +399,16 @@ $(function() {
 			$('#final-univers-odeur-1').text(smell1);
 			$('#final-univers-odeur-2').text(smell2);
 
+		});
+
+		/*
+		** Page 5 : email
+		*/
+
+			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		$('#field-email').on('keyup', function() {
+			$(this).val().length > 2 && re.test($(this).val()) ? $('#question-5 .question-next').removeClass('blocked') : $('#question-5 .question-next').addClass('blocked');
 		});
 
 	}

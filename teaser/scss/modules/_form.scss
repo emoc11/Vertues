@@ -66,6 +66,11 @@
 	}
 }
 
+.form--email {
+	margin: 0 auto 30px;
+    max-width: 960px;
+}
+
 @include tablet {
 	.form {
 		margin: 40px 0;

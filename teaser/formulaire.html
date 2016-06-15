@@ -17,7 +17,7 @@
 		</div>
 	</header>
 
-	<section class="question question--intro"> 
+	<section class="question question--intro" id="question-0"> 
 		<div class="question-wrapper">
 			<div class="question-texte">Afin de vous proposer une expérience immersive complète, <br/>nous vous invitons à répondre aux 5 questions suivantes.</div>
 			<a href="#question-1" class="question-next button">Commencer</a>
@@ -138,7 +138,7 @@
 					</div>
 				</div>
 			</div>		
-			<a href="#question-4" class="question-next button">Continuer</a>
+			<a href="#question-4" class="question-next button blocked">Continuer</a>
 		</div>
 	</section>
 
@@ -160,7 +160,22 @@
 		</div>
 	</section>
 
-	<section class="question question--final" id="question-5">
+	<section class="question question--intro" id="question-5">
+		<div class="container">
+			<div class="question-head">Question V</div>
+			<div class="question-title"><p>Pour finir, veuillez-nous indiquer votre mail :</p></div>
+			<div class="question-wrapper col-sm-6 col-sm-push-3 col-lg-4 col-lg-push-4">
+				<form novalidate>
+					<div class="form form--email">
+						<input class="form-input" type="email" placeholder="Email*" id="field-email">
+					</div>
+				</form>
+				<a href="#question-6" class="question-next button blocked">Continuer</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="question question--final" id="question-6">
 		<div class="container">
 			<div class="question-head">Merci !</div>
 			<div class="question-title"><p>Merci d'avoir renseigné les questions précédentes ! Vous voilà prêt à découvrir un univers exceptionnel. Le voyage n'attend que vous, profitez de l'univers : <span id="final-univers-name" class="blue"></span> avec une légère senteure de : <span class="blue" id="final-univers-odeur-1"></span>, ainsi que de : <span class="blue" id="final-univers-odeur-2"></span> ! Bon voyage !</p></div>

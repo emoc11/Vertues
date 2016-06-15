@@ -3,6 +3,10 @@
 	padding-left: 15px;
 	padding-right: 15px;
 
+	&#question-0 {
+		display: block;
+	}
+
 	&-head {
 		margin-left: 10vw;
 		font-size: 5em;
@@ -79,7 +83,10 @@
 
 .question--intro {
 	text-align: center;
-	display: block;
+
+	.question-title {
+	    margin: 50px 0 -30px;
+	}
 
 	.question-wrapper {
 		padding-top: 20vh;
