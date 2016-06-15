@@ -24,6 +24,8 @@
 	
 	&-ocean-illu {
 		margin-top: -170px;
+		position: relative;
+		z-index: 2;
 	}
 }
 
@@ -38,7 +40,8 @@
 		}
 
 		&-link {
-			margin: 30px auto 0;
+			margin: 50px auto 30px !important;
+    		display: block;
 		}
 
 		&-ocean-illu {

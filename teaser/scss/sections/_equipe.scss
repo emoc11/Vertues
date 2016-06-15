@@ -1,6 +1,10 @@
 .equipe {
 	&-intro {
 		padding-top: 70px;
+
+		@include tablet {
+			padding-top: 40px;
+		}
 	}
 
 	&-membres {

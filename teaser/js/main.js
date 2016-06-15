@@ -137,7 +137,7 @@ $(function() {
 
 	}
 
-	$menuLink.on('click', function(e) {
+	$("a[href*='#']").on('click', function (e) {
 
 		clickedMenuLink = true;
 
@@ -146,7 +146,7 @@ $(function() {
 		$menuLink.removeClass('is-active'); // On enlève la classe "is-active" de tous les liens du menu
 		$(this).addClass('is-active'); // On l'ajoute au lien cliqué
 
-		var ancre = $('.menu-link.is-active').attr('href'); // On récupère l'ancre vers lequel redirige le lien
+		var ancre = $(this).attr('href'); // On récupère l'ancre vers lequel redirige le lien
 
 		// if (ancre !== '#accueil') clickedMenuLink = true; // si le lien ne renvoie pas vers la page d'accueil, alors on garde en mémoire que le scroll est déclenché par un clic sur un lien
 
