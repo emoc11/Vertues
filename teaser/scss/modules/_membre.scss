@@ -73,6 +73,12 @@
 
 .membre--anina {
 	float: left;
+
+	.membre-illu {
+		&--second {
+			background-position: 0 -139px;
+		}
+	}
 }
 
 
