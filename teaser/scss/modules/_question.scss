@@ -9,7 +9,7 @@
 
 	&-head {
 		margin-left: 10vw;
-		font-size: 5em;
+		font-size: 3em;
 		text-transform: uppercase;
 		font-weight: 900;
 		font-family: "Montserrat", sans-serif;
@@ -18,6 +18,10 @@
 
 	&-title {
 		margin: 10px 0 30px 20vw;
+
+		#question-2 & {
+			margin-bottom: 15px;
+		}
 	}
 
 	&-next {

@@ -9,7 +9,7 @@
 	}
 
 	&-illu {
-		height: 140px;
+		height: 110px;
 		width: auto;
 
 		&--full {
@@ -89,6 +89,10 @@
 			margin: 50px 0 0;
 		}
 
+		#question-2 & {
+			margin: 10px 0;
+		}
+
 		&#list-univers {
 			display: none;
 
@@ -109,7 +113,7 @@
 	&-name {
 		font-family: "Montserrat", sans-serif;
 		text-transform: uppercase; 
-		margin-left: 36%;
+		margin-left: 30%;
 		opacity: 0.9;
 		font-weight: 900;
 	}
@@ -223,8 +227,6 @@
 		// }
 
 		&-illu {
-			height: auto;
-
 			#question-2 .choices-item--center & {
 				height: 100px;
 				width: auto;

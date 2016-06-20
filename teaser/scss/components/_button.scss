@@ -17,7 +17,7 @@
 	text-transform: uppercase;
 	position: relative;
 	opacity: 1;
-	transition: opacity .3s ease-out;
+	transition: all .3s ease-out;
 
 	&:after {
 		content:"";
@@ -98,7 +98,6 @@
 	font-size: .8em;
 	font-family: "Montserrat", sans-serif;
 	outline: none;
-	transition: all .1s ease-in;
 
 	&:after {
 		content: none;
